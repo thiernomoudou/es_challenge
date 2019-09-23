@@ -1,6 +1,6 @@
 import unittest
 
-from pig_latin import translate
+from pig_latin import piglatin_tranlator as translate
 
 
 class TestPigLatin(unittest.TestCase):
@@ -15,10 +15,10 @@ class TestPigLatin(unittest.TestCase):
     def test_word_begins_with_consonnant_cluster(self):
         smile = translate('smile')
         glove = translate('glove')
-        my = translate('string')
+        string = translate('string')
         self.assertEqual(smile, 'ilesmay')
         self.assertEqual(glove, 'oveglay')
-        self.assertEqual(my, 'ingstray')
+        self.assertEqual(string, 'ingstray')
 
     def test_word_begins_with_voye(self):
         eat = translate('eat')

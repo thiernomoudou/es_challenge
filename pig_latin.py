@@ -1,42 +1,67 @@
+from string import ascii_uppercase, ascii_lowercase
 
 
-# the translator
-def translate(text):
+def append(w, suffix):
 
-    # Non string
-    if not isinstance(text, str):
+    if not w:
+        return suffix
+    elif w[-1] in ascii_uppercase:
+        return w + suffix.upper()
+    else:
+        return w + suffix.lower()
+
+
+def piglatin_tranlator(sentence):
+    """
+    takes a sentence in English and translate
+    into Latin pig"""
+
+    # Non string should return an error
+    if not isinstance(sentence, str):
         return 'The phrase to translate should be a string'
-    
-    # format text
-    text = [i for i in text]
-    for i, letter in enumerate(text):
-        # remove if not alpha, space
-        if not letter.isalpha() and letter not in ' ':
-            text[i] = ''
-    text = ''.join(text)
 
-    # split and translate
-    text = [i for i in text.split()]
-    for i, word in enumerate(text):
+    output = ''
+    for word in sentence.split(' '):
+        if word:
+            # check for punctuation
+            p = 0
+            while word[p-1] not in ascii_uppercase+ascii_lowercase:
+                p = p-1
+            if p:
+                punc = word[p:]
+                word = word[:p]
+            else:
+                punc = ''
 
-        # if starts with a consonant, move first letter(s) to end
-        if not word[0] in 'aeiouAEIOU':
+            # and pre-punc (e.g., parentheses)
+            p = 0
+            while word[p] not in ascii_uppercase+ascii_lowercase:
+                p = p+1
+            prepunc = word[:p]
+            word = word[p:]
 
-            # figure out what is the first vowel
-            vowels = []
-            for _, letter in enumerate(word):
-                if letter in 'aeiouAEIOU':
-                    vowels.append(letter)
-            # rearrange word
-            if len(vowels) > 0:
-                word = word.partition(vowels[0])
-                word = ''.join(word[1:]) + word[0]
+            # note capitalization
+            if word[0] in ascii_uppercase:
+                caps = 1
+            else:
+                caps = 0
 
-        # add "ay" to the end
-        text[i] = word + 'ay'
+            # remove up to the first vowel to make suffix
+            p = 0
+            while p < len(word) and word[p] not in "aoeuiyAOEUIY":
+                p = p+1
 
-    # put it all back together
-    text = ' '.join(text)
+            if not p:
+                word = append(word, "ay")
+            else:
+                word = append(word[p:], word[:p]+"ay")
 
-    # print the translated text
-    return(text)
+            # recapitalize, as appropriate
+            if caps:
+                word = word[0].upper() + word[1:]
+
+            # restore any punctuation
+            word = prepunc + word + punc
+
+        output = output + ' ' + word
+    return output[1:]

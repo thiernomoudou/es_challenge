@@ -13,7 +13,11 @@ Settings
 --------
 The microservice uses Docker, Docker-compose, and Flask
 
-* To create a build,  use this command::
+* Clone the project by typing::
+
+    $ git clone https://github.com/thiernomoudou/es_challenge.git
+
+* To create a build,  ** cd into the es_challenge directory** and type::
 
     $ docker-compose build
 
@@ -23,7 +27,7 @@ The microservice uses Docker, Docker-compose, and Flask
     $ docker-compose up
 
 
-The application will be available on localhost:4000
+The application will be available on **localhost:4000/**
 
 To submit a phrase to translate, use the following endpoint:
 **localhost:4000/translate**.
@@ -31,3 +35,21 @@ To submit a phrase to translate, use the following endpoint:
 * To run tests::
 
     $ python3 -m unittest test.py
+
+
+Clients
+--------
+
+Python client
+^^^^^^^^^^^^^^
+
+* To use the python client, execute the following ::
+
+    $ python pyclient.py <sentence to translate>
+
+**<sentence to translate>** should be a string (quoted if contains more than one word)
+
+
+Javascript client
+^^^^^^^^^^^^^^
+
