@@ -15,7 +15,7 @@ The microservice uses Docker, Docker-compose, and Flask
 
 * To start the application,  excute the following::
 
-    $ docker-compose build
+    $ docker-compose up
 
 
 The application will be available on localhost:4000
