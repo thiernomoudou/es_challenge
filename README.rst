@@ -53,3 +53,10 @@ Python client
 Javascript client
 ^^^^^^^^^^^^^^
 
+You need to have **NodeJs** installed before using the Javascript client.
+
+* To use it, execute the following ::
+
+    $ node jsclient.js <sentence to translate>
+
+**<sentence to translate>** should be a string (quoted if contains more than one word)
