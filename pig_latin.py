@@ -6,7 +6,7 @@ def translate(text):
     # Non string
     if not isinstance(text, str):
         return 'The phrase to translate should be a string'
-
+    
     # format text
     text = [i for i in text]
     for i, letter in enumerate(text):
