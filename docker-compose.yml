@@ -1,0 +1,8 @@
+web:
+  container_name: easy_solar
+  build: .
+  ports:
+    - "4000:8000"
+  volumes:
+    - $PWD:/app
+  command: python app.py
