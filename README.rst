@@ -72,15 +72,41 @@ Before deploying you have to make sure that **kubectl** is installed.
 
 * To deploy the app, you first run the following ::
 
-    $ kubectl apply -f es-deployment.yaml
+    $ kubectl apply -f es-deployment.yml
 
 * Then, type  ::
 
-    $ kubectl apply -f es-service.yaml
+    $ kubectl apply -f es-service.yml
 
 
 If you want to scale the application, just updat the replicas field on es-deployment.yml and
 apply the changes by typing the above command
 
 
-If you want to re-deploy, you need to build a new image then update the es-deployment.yml image accordinly
+If you want to re-deploy, you need to build a new image then update the es-deployment.yml image accordinly.
+
+Testing Locally
+^^^^^^^^^^^^^^^^
+To deploy the microservice on a local cluster, make sure you have .. _minikube: https://github.com/kubernetes/minikube installed.
+
+Run the above commands and replcace **es-service-yml** by **dev-es-service**
+
+* The second command will be  ::
+
+    $ kubectl apply -f -dev-es-service.yml
+
+* Then, execute the following, make sure you have **curl** installed  ::
+
+    $ curl -d '{"sentence":"Hello, my name is Alice."}' -H "Content-Type: application/json" -X POST $(minikube ip):31000/translate
+
+you will get the sentence translated.
+
+Change the value of sentence and test again.
+
+Deployment on Google Cloud Platform
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The microservice external ip is : **http://34.74.216.120/**
+
+* Execute the following to access the application deployed on GCP, make sure you have **curl** installed  ::
+
+    $ curl -d '{"sentence":"Hello, my name is Alice."}' -H "Content-Type: application/json" -X POST http://34.74.216.120/translate

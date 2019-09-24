@@ -1,17 +1,20 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: es-deployment 
   labels:
-    name: es-deployment
+    name: esdeployment
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: esdeployment
   template:
     metadata:
       labels:
-        app: es-deployment
+        app: esdeployment
     spec:
       containers:
-      - name: es-deployment
+      - name: esdeployment
         image: thiernodocker/es-lask:v2
       restartPolicy: Always

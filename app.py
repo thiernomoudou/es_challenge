@@ -6,7 +6,6 @@ import pig_latin
 
 app = Flask(__name__)
 
-
 @app.route("/translate",  methods=['POST'])
 def latin_pig_translator():
     english_text = json.loads(request.data)
