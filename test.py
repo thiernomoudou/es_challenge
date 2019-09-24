@@ -34,6 +34,10 @@ class TestPigLatin(unittest.TestCase):
         result = translate(392837263)
         self.assertEqual(result, 'The phrase to translate should be a string')
 
+    def test_empty_string(self):
+        result = translate('')
+        self.assertEqual(result, '')
+
 
 if __name__ == '__main__':
     unittest.main()

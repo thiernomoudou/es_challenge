@@ -19,6 +19,10 @@ def piglatin_tranlator(sentence):
     # Non string should return an error
     if not isinstance(sentence, str):
         return 'The phrase to translate should be a string'
+    
+    # Empty string
+    if len(sentence) == 0:
+        return sentence
 
     output = ''
     for word in sentence.split(' '):

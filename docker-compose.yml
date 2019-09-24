@@ -5,4 +5,3 @@ web:
     - "4000:8000"
   volumes:
     - $PWD:/app
-  command: python app.py

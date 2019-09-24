@@ -13,5 +13,5 @@ spec:
     spec:
       containers:
       - name: es-deployment
-        image: es-flask thiernodocker/es-flask:v1
+        image: thiernodocker/es-lask:v2
       restartPolicy: Always
