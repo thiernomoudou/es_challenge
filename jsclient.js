@@ -14,7 +14,7 @@ const handleArgs = () => {
 const http = require('http');
 
 sentence_to_translate = handleArgs();
-console.log(sentence_to_translate)
+
 
 const data = JSON.stringify({
   sentence: sentence_to_translate 
@@ -31,9 +31,6 @@ const options = {
 }
 
 const req = http.request(options, res => {
-  console.log(`statusCode: ${res.statusCode}`);
-  console.log(req.data)
-
   res.on('data', d => {
     process.stdout.write(d)
   })

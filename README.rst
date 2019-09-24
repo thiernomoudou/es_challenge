@@ -40,12 +40,16 @@ To submit a phrase to translate, use the following endpoint:
 Clients
 --------
 
+Testing locally
+----------------
+----------------
+
 Python client
 ^^^^^^^^^^^^^^
 
 * To use the python client, execute the following ::
 
-    $ python pyclient.py <sentence to translate>
+    $ python3 pyclient.py <sentence to translate>
 
 **<sentence to translate>** should be a string (quoted if contains more than one word)
 
@@ -60,3 +64,23 @@ You need to have **NodeJs** installed before using the Javascript client.
     $ node jsclient.js <sentence to translate>
 
 **<sentence to translate>** should be a string (quoted if contains more than one word)
+
+Deployment
+-----------
+
+Before deploying you have to make sure that **kubectl** is installed.
+
+* To deploy the app, you first run the following ::
+
+    $ kubectl apply -f es-deployment.yaml
+
+* Then, type  ::
+
+    $ kubectl apply -f es-service.yaml
+
+
+If you want to scale the application, just updat the replicas field on es-deployment.yml and
+apply the changes by typing the above command
+
+
+If you want to re-deploy, you need to build a new image then update the es-deployment.yml image accordinly

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: es-deployment 
+  labels:
+    name: es-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: es-deployment
+    spec:
+      containers:
+      - name: es-deployment
+        image: es-flask thiernodocker/es-flask:v1
+      restartPolicy: Always
